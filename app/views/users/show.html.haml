@@ -15,8 +15,8 @@
         %p.mb-3
           %strong Ostatnie logowanie:
           = @user.last_sign_in_at ? l(@user.last_sign_in_at, format: :short) : "brak danych"
-
-        = link_to "Edytuj konto", edit_user_registration_path, class: "btn btn-outline-primary btn-sm me-2"
+        = link_to "Rozmowy", conversations_path, class: "btn btn-outline-primary btn-sm me-2"
+        = link_to "Edytuj konto", edit_user_registration_path, class: "btn btn-outline-info btn-sm me-2"
         = button_to "Wyloguj",
             destroy_user_session_path,
             method: :delete,

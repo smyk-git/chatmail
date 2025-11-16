@@ -1,0 +1,19 @@
+.row.justify-content-center
+  .col-md-6
+    .card.shadow-sm
+      .card-body
+        %h3.card-title.mb-3 Nowa rozmowa
+
+        - if @conversation.errors.any?
+          .alert.alert-danger
+            %h6.mb-2 Wystąpiły błędy:
+            %ul.mb-0
+              - @conversation.errors.full_messages.each do |msg|
+                %li= msg
+
+        = form_with model: @conversation, local: true do |f|
+          .mb-3
+            = f.label :subject, "Temat", class: "form-label"
+            = f.text_field :subject, class: "form-control"
+
+          = f.submit "Utwórz", class: "btn btn-primary"
