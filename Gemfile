@@ -10,8 +10,8 @@ gem "bootsnap", require: false
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # --- FRONTEND ---
-# React przez Vite (zamiast importmap). Możesz zostawić turbo/stimulus.
-gem "vite_rails"
+#isprockets
+gem "sprockets-rails", "~> 3.5"
 gem "turbo-rails"
 gem "stimulus-rails"
 # (opcjonalnie usuń `importmap-rails` jeśli był – z Vite nie jest potrzebny)
@@ -19,6 +19,7 @@ gem "stimulus-rails"
 
 # --- WIDOKI ---
 gem "haml-rails"
+gem "sass-rails"
 
 # --- AUTH ---
 gem "devise"
@@ -65,3 +66,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "html2haml", "~> 2.3"
+
+gem "pry", "~> 0.15.2"
