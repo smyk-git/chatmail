@@ -1,0 +1,35 @@
+.row.justify-content-center
+  .col-md-6
+    .card.shadow-sm
+      .card-body
+        %h3.card-title.mb-3 Rejestracja
+
+        = form_with model: resource, as: resource_name, url: registration_path(resource_name), local: true do |f|
+          - if resource.errors.any?
+            .alert.alert-danger
+              %p.mb-1 Wystąpiły błędy:
+              %ul.mb-0
+                - resource.errors.full_messages.each do |msg|
+                  %li= msg
+
+          .mb-3
+            = f.label :email, class: "form-label"
+            = f.email_field :email, autofocus: true, class: "form-control"
+
+          .mb-3
+            = f.label :password, class: "form-label"
+            - if @minimum_password_length
+              %small.text-muted
+                (minimum
+                = @minimum_password_length
+                znaków)
+            = f.password_field :password, autocomplete: "new-password", class: "form-control"
+
+          .mb-3
+            = f.label :password_confirmation, class: "form-label"
+            = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+
+          = f.submit "Załóż konto", class: "btn btn-primary w-100"
+
+        %hr
+        = link_to "Masz już konto? Zaloguj się", new_session_path(resource_name), class: "btn btn-link p-0"
