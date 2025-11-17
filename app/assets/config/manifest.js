@@ -1,5 +1,6 @@
 //= link_tree ../images
 //= link_directory ../stylesheets .css
-//= link_directory ../javascripts .js
-//= link_tree ../../javascript .js
-//= link_tree ../../../vendor/javascript .js
+//= link application.js
+//= link channels/conversation_channel.js
+//= link channels/consumer.js
+//= link channels/index.js

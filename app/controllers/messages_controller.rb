@@ -7,6 +7,17 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
+      ConversationChannel.broadcast_to(
+        @conversation,
+        {
+          message_id: @message.id,
+          message_html: render_to_string(
+            partial: 'messages/message',
+            formats: [:html],
+            locals: { message: @message }
+          ),
+        }
+      )
       redirect_to @conversation, notice: "Your message has been sent!"
     else
       @messages = @conversation.messages.includes(:user).order(created_at: :desc)

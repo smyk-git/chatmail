@@ -14,8 +14,7 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "sprockets-rails", "~> 3.5"
 gem "turbo-rails"
 gem "stimulus-rails"
-# (opcjonalnie usuń `importmap-rails` jeśli był – z Vite nie jest potrzebny)
-# gem "importmap-rails"
+gem "importmap-rails"
 
 # --- WIDOKI ---
 gem "haml-rails"

@@ -1,32 +1,26 @@
-.row
-  .col-md-8
-    %h3= @conversation.subject
-  .col-md-4.text-md-end
-    = link_to "Wróć do rozmów", conversations_path, class: "btn btn-outline-secondary btn-sm"
+%div#conversation{ data: { conversation_id: @conversation.id } }
+  .row
+    .col-md-8
+      %h3= @conversation.subject
+    .col-md-4.text-md-end
+      = link_to "Wróć do rozmów", conversations_path, class: "btn btn-outline-secondary btn-sm"
 
-.row.mt-3
-  .col-md-12
-    .card
-      .card-body
-        - if @messages.any?
-          - @messages.each do |message|
+  .row.mt-3
+    .col-md-12
+      .card
+        .card-body#messages-list
+          - if @messages.any?
+            - @messages.each do |message|
+              = render "messages/message", message: message
+          - else
+            .text-muted
+              Brak wiadomości w tej rozmowie. Napisz coś jako pierwszy 😊
+
+      .card.mt-3
+        .card-body
+          %h5.mb-3 Nowa wiadomość
+          = form_with(model: [@conversation, @message], local: true) do |f|
             .mb-3
-              .d-flex.justify-content-between
-                %strong= message.user.email
-                %small.text-muted= l(message.created_at, format: :short)
-              %div
-                = simple_format(message.body)
-              %hr
-        - else
-          .text-muted
-            Brak wiadomości w tej rozmowie. Napisz coś jako pierwszy 😊
-
-    / Formularz nowej wiadomości
-    .card.mt-3
-      .card-body
-        %h5.mb-3 Nowa wiadomość
-        = form_with(model: [@conversation, @message], local: true) do |f|
-          .mb-3
-            = f.label :body, "Treść", class: "form-label"
-            = f.text_area :body, rows: 3, class: "form-control"
-          = f.submit "Wyślij", class: "btn btn-primary"
+              = f.label :body, "Treść", class: "form-label"
+              = f.text_area :body, rows: 3, class: "form-control"
+            = f.submit "Wyślij", class: "btn btn-primary"
