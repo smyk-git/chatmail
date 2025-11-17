@@ -44,7 +44,7 @@ function setupConversationChannel() {
           }
 
           if (data.message_html) {
-            messagesList.insertAdjacentHTML("beforeend", data.message_html)
+            messagesList.insertAdjacentHTML("afterbegin", data.message_html)
             messagesList.scrollTop = messagesList.scrollHeight
           }
         }

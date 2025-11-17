@@ -8,15 +8,6 @@
   .row.mt-3
     .col-md-12
       .card
-        .card-body#messages-list
-          - if @messages.any?
-            - @messages.each do |message|
-              = render "messages/message", message: message
-          - else
-            .text-muted
-              Brak wiadomości w tej rozmowie. Napisz coś jako pierwszy 😊
-
-      .card.mt-3
         .card-body
           %h5.mb-3 Nowa wiadomość
           = form_with(model: [@conversation, @message], local: true) do |f|
@@ -24,3 +15,25 @@
               = f.label :body, "Treść", class: "form-label"
               = f.text_area :body, rows: 3, class: "form-control"
             = f.submit "Wyślij", class: "btn btn-primary"
+      .card.mt-2
+        .card-body#messages-list
+          - if @messages.any?
+            - recent_messages = @messages.take(Message::DISPLAY_COUNT)
+            - older_messages = @messages.drop(Message::DISPLAY_COUNT)
+            - recent_messages.each do |message|
+              = render "messages/message", message: message
+
+            - if older_messages.any?
+              %button.btn.btn-outline-secondary.btn-sm.mb-2{ type: "button",
+                data: { bs_toggle: "collapse", bs_target: "#messages-list-collapse" },
+                aria: { expanded: "false", controls: "messages-list-collapse" }
+              }
+                wszystkie
+
+              #messages-list-collapse.collapse.mb-3
+                - older_messages.each do |message|
+                  = render "messages/message", message: message
+          - else
+            .text-muted
+              Brak wiadomości w tej rozmowie. Napisz coś jako pierwszy 😊
+
