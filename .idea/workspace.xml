@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7a1f87ca-119d-4735-b22f-ba301828701d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/conversations_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/conversations_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/channels/conversation_channel.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/channels/conversation_channel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/message.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/message.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/conversations/show.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/conversations/show.html.haml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +30,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;action-cable&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/msmykowski/studia/chatmail&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -140,6 +136,7 @@
       <updated>1763137334004</updated>
       <workItem from="1763137335572" duration="785000" />
       <workItem from="1763138215011" duration="8415000" />
+      <workItem from="1763368971829" duration="1914000" />
     </task>
     <servers />
   </component>
