@@ -13,13 +13,14 @@ class ConversationsController < ApplicationController
   end
 
   def new
-    @conversation = current_user.conversations.build
+    @conversation = Conversation.new
   end
 
   def create
     @conversation = Conversation.create!(conversation_params.merge(user_id: current_user.id))
     @conversation.users << current_user #unless @conversation.users.exists?(current_user.id)
     if @conversation.save
+      UserEmailService.new(@conversation).send_conversation_email
       redirect_to @conversation, notice: "Your conversation has been created!"
     else
       render :new, status: :unprocessable_entity, alert: "Your conversation failed to be created!"
