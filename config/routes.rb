@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get "profile", to: "users#show", as: :profile
 
+  resources :news, only: :index
+
   resources :conversations do
     resources :messages, only: :create
   end

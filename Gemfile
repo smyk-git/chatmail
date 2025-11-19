@@ -46,6 +46,8 @@ gem "rack-attack"      # rate limiting
 # --- JSON helpers (zostaw, jeśli używasz) ---
 gem "jbuilder"
 
+gem "httparty"
+
 group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"

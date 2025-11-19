@@ -1,0 +1,35 @@
+.container.mt-4
+  %h3.mb-4 📰 Najnowsze newsy
+
+  / --- FORMULARZ WYSZUKIWANIA ---
+  = form_with url: news_index_path, method: :get, local: true, class: "row mb-4" do |f|
+    .col-md-10
+      = f.text_field :q,
+        value: params[:q],
+        placeholder: "Szukaj newsów… (np. technology, ai, sport)",
+        class: "form-control"
+    .col-md-2
+      = f.submit "Szukaj", class: "btn btn-primary w-100"
+
+  - if @articles.blank?
+    .alert.alert-info
+      Brak wyników dla zapytania:
+      %strong= params[:q].presence || "technology"
+
+  - else
+    .row
+      - @articles.each do |article|
+        .col-md-6.mb-4
+          .card.h-100.shadow-sm
+            .card-body
+              %h5.card-title= article[:title]
+
+              - if article[:published_at].present?
+                %small.text-muted
+                  = Time.parse(article[:published_at]).strftime("%d.%m.%Y %H:%M")
+
+              %p.mt-3= truncate(article[:text].to_s, length: 200)
+
+            .card-footer.bg-white
+              %a.btn.btn-outline-primary{ href: article[:url], target: "_blank", rel: "noopener" }
+                Czytaj więcej →
