@@ -1,7 +1,6 @@
 .container.mt-4
   %h3.mb-4 📰 Najnowsze newsy
 
-  / --- FORMULARZ WYSZUKIWANIA ---
   = form_with url: news_index_path, method: :get, local: true, class: "row mb-4" do |f|
     .col-md-10
       = f.text_field :q,
