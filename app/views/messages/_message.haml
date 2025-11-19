@@ -1,6 +1,6 @@
 .mb-3.message{ data: { message_id: message.id } }
   .d-flex.justify-content-between
-    %strong= message.user.email
+    %strong= message.author
     %small.text-muted= l(message.created_at, format: :short)
   %div
     = simple_format(message.body)

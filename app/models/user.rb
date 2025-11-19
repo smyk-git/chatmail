@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-  has_many :conversations, dependent: :destroy
+  validates :name, presence: true , length: { maximum: 50 }
+
+  has_many :conversation_users, dependent: :destroy
+  has_many :conversations, through: :conversation_usersu
+
   has_many :messages, dependent: :nullify
+
 end

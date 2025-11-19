@@ -2,12 +2,13 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @conversations = current_user.conversations.order(created_at: :desc)
+    @conversations = Conversation.order(created_at: :desc)
   end
 
   def show
-    @conversation = current_user.conversations.find(params[:id])
-    @messages = @conversation.messages.order(created_at: :desc)
+    @conversation = Conversation.find(params[:id])
+    @conversation.users << current_user unless @conversation.users.exists?(current_user.id)
+    @messages = @conversation.messages.includes(:user).order(created_at: :desc)
     @message = @conversation.messages.build
   end
 
@@ -16,7 +17,8 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    @conversation = current_user.conversations.build(conversation_params)
+    @conversation = Conversation.create!(conversation_params.merge(user_id: current_user.id))
+    @conversation.users << current_user #unless @conversation.users.exists?(current_user.id)
     if @conversation.save
       redirect_to @conversation, notice: "Your conversation has been created!"
     else
