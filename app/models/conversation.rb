@@ -6,6 +6,6 @@ class Conversation < ApplicationRecord
   validates :subject, presence: true, length: { minimum:1, maximum: 255 }
 
   def author
-    User.find_by(id: user_id)&.name || "no creator"
+    User.find_by(id: user_id)
   end
 end

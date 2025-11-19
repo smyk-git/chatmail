@@ -13,12 +13,14 @@
             %div
               %h5.card-header
                 %small.text-muted Autor:
-                = conversation&.author
-              %h4.card-title
-                = link_to conversation.subject, conversation
+                = conversation&.author.name || "No Creator"
+                = avatar_for(conversation.author)
               %small.text-muted
                 Utworzono:
                 = l(conversation.created_at, format: :short)
+            %h4.card-title
+              = link_to conversation.subject, conversation
+
             %div
               = button_to "Usuń",
                           conversation_path(conversation),

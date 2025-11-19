@@ -27,7 +27,7 @@ class ConversationsController < ApplicationController
   end
 
   def destroy
-    @conversation = current_user.conversations.find(params[:id])
+    @conversation = Conversation.find(params[:id])
     @conversation.destroy
     redirect_to conversations_path, notice: "Rozmowa została usunięta."
   end
