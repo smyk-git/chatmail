@@ -8,4 +8,5 @@ class Conversation < ApplicationRecord
   def author
     User.find_by(id: user_id)
   end
+
 end

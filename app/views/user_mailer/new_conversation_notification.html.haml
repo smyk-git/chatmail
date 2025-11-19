@@ -1,0 +1,14 @@
+%h2 Nowa konwersacja dostępna
+
+%p
+  Cześć
+  = @user.name || @user.email
+  ,
+
+%p
+  Otrzymałeś dostęp do nowej konwersacji o tytule:
+  %strong= @conversation.subject
+
+%p
+  Wejdź tutaj, aby ją otworzyć:
+  %a{ href: conversation_url(@conversation) } Otwórz konwersację

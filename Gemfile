@@ -48,6 +48,10 @@ gem "jbuilder"
 
 gem "httparty"
 
+gem "letter_opener"
+
+gem 'delayed_job_active_record'
+
 group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
