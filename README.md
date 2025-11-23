@@ -1,24 +1,12 @@
-# README
+# CHATMAIL RAILS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Steps to run **
+* bash - start rails server and delayed jobs
+  ```
+  bundle exec rails server
+  bundle exec rake jobs:work
+  '''
+* Go to chat [analyzer](https://github.com/smyk-git/chatmail-analyzer) for microservice documentation
+* create account and have fun testing
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### If You want to read some news don't hesitate to check out /new page 
