@@ -4,5 +4,10 @@
     %strong= message.author.name || message.author.email
     %small.text-muted= l(message.created_at, format: :short)
   %div
+    - if message.analysis && message.analysis["flagged"]
+      %span.badge.bg-danger Podejrzana wiadomość
+    - elsif message.analysis && message.analysis["sentiment"] == "positive"
+      %span.badge.bg-success 😊
     = simple_format(message.body)
+
   %hr
