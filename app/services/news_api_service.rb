@@ -1,5 +1,4 @@
 class NewsApiService
-
   def initialize(api_key: ENV["WORLDNEWS_API_KEY"])
     @api_key = api_key
   end
@@ -24,9 +23,8 @@ class NewsApiService
         title: article["title"],
         text: article["text"],
         url: article["url"],
-        published_at: article["publish_date"],
+        published_at: article["publish_date"]
       }
     end
   end
-
 end

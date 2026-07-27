@@ -7,6 +7,6 @@ class CreateConversationUsers < ActiveRecord::Migration[7.2]
       t.timestamps
     end
 
-    add_index :conversation_users, [:conversation_id, :user_id], unique: true
+    add_index :conversation_users, [ :conversation_id, :user_id ], unique: true
   end
 end
