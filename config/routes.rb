@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "messages/create"
-  get "home/index"
   devise_for :users
 
   mount ActionCable.server => "/cable"
