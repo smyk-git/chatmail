@@ -391,6 +391,7 @@ GEM
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
     sexp_processor (4.17.4)
+    simplecov (1.0.3)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -475,6 +476,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails
   selenium-webdriver
+  simplecov
   sprockets-rails (~> 3.5)
   stimulus-rails
   turbo-rails
