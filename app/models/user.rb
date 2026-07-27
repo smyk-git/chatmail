@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true , length: { maximum: 50 }
 
   has_many :conversation_users, dependent: :destroy
-  has_many :conversations, through: :conversation_usersu
+  has_many :conversations, through: :conversation_users
 
   has_many :messages, dependent: :nullify
 
