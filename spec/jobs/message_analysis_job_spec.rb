@@ -4,7 +4,7 @@ RSpec.describe MessageAnalysisJob, type: :job do
   let(:message) { create(:message) }
 
   it "stores the analyzer result on the message" do
-    result = { "sentiment" => "positive", "flagged" => false, "tags" => ["greeting"] }
+    result = { "sentiment" => "positive", "flagged" => false, "tags" => [ "greeting" ] }
     allow(MessageAnalysisService).to receive(:analyze).and_return(result)
 
     described_class.perform_now(message.id)

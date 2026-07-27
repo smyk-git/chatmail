@@ -11,3 +11,13 @@ AllCops:
     - "db/schema.rb"
     - "vendor/**/*"
     - "node_modules/**/*"
+
+# Request and system specs legitimately assert a few things per example
+# (HTTP status + rendered content + a redirect) and walk through a short flow.
+# Relax the single-expectation / five-line defaults rather than splitting
+# end-to-end scenarios into artificial, setup-repeating pieces.
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/ExampleLength:
+  Max: 20
