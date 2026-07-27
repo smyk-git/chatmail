@@ -1,0 +1,40 @@
+name: chatmail
+
+# One-command development stack: Rails app + PostgreSQL.
+# Start with: docker compose up
+# App: http://localhost:3000
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: chatmail
+      POSTGRES_PASSWORD: chatmail
+      POSTGRES_DB: chatmail_development
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chatmail"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "rm -f tmp/pids/server.pid && bin/rails db:prepare && bin/rails server -b 0.0.0.0"
+    environment:
+      DATABASE_URL: postgres://chatmail:chatmail@db:5432/chatmail_development
+    volumes:
+      - .:/rails
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
