@@ -7,7 +7,7 @@ SimpleCov.start "rails" do
 
   # Realistic floor set just below current coverage so it fails loudly on
   # regressions without blocking CI. Raise it as the suite grows.
-  minimum_coverage 33
+  minimum_coverage 84
 end
 
 require 'spec_helper'
@@ -48,6 +48,13 @@ end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :request
+
+  # System specs drive the app through the full HTTP stack. rack_test needs no
+  # browser, so the suite stays fast and runs in CI without Chrome; the covered
+  # flow (forms + redirects) needs no JavaScript.
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
