@@ -365,6 +365,9 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
+    rubocop-rspec (3.9.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.81)
     ruby-progressbar (1.13.0)
     ruby_parser (3.21.1)
       racc (~> 1.5)
@@ -388,6 +391,7 @@ GEM
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
     sexp_processor (4.17.4)
+    simplecov (1.0.3)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -469,8 +473,10 @@ DEPENDENCIES
   rails (~> 7.2)
   rspec-rails
   rubocop-rails-omakase
+  rubocop-rspec
   sass-rails
   selenium-webdriver
+  simplecov
   sprockets-rails (~> 3.5)
   stimulus-rails
   turbo-rails

@@ -18,7 +18,7 @@ class ConversationsController < ApplicationController
 
   def create
     @conversation = Conversation.create!(conversation_params.merge(user_id: current_user.id))
-    @conversation.users << current_user #unless @conversation.users.exists?(current_user.id)
+    @conversation.users << current_user # unless @conversation.users.exists?(current_user.id)
     if @conversation.save
       UserEmailService.new(@conversation).send_conversation_email
       redirect_to @conversation, notice: "Your conversation has been created!"
@@ -38,5 +38,4 @@ class ConversationsController < ApplicationController
   def conversation_params
     params.require(:conversation).permit(:subject)
   end
-
 end

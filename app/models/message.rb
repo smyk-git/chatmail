@@ -13,5 +13,4 @@ class Message < ApplicationRecord
   def author
     user
   end
-
 end

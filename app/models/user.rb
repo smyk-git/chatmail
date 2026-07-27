@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-  validates :name, presence: true , length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 50 }
 
   has_many :conversation_users, dependent: :destroy
-  has_many :conversations, through: :conversation_usersu
+  has_many :conversations, through: :conversation_users
 
   has_many :messages, dependent: :nullify
 
@@ -18,5 +18,4 @@ class User < ApplicationRecord
 
     "https://www.gravatar.com/avatar/#{hash}?s=#{size}?s=#{size}&d=identicon&r=g"
   end
-
 end

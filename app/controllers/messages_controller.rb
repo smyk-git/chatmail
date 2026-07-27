@@ -12,10 +12,10 @@ class MessagesController < ApplicationController
         {
           message_id: @message.id,
           message_html: render_to_string(
-            partial: 'messages/message',
-            formats: [:html],
+            partial: "messages/message",
+            formats: [ :html ],
             locals: { message: @message }
-          ),
+          )
         }
       )
       redirect_to @conversation, notice: "Your message has been sent!"
