@@ -1,5 +1,36 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Message, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has a valid factory" do
+    expect(build(:message)).to be_valid
+  end
+
+  describe "validations" do
+    it "requires a body" do
+      message = build(:message, body: nil)
+      expect(message).not_to be_valid
+      expect(message.errors[:body]).to be_present
+    end
+  end
+
+  describe "associations" do
+    it "belongs to a user and a conversation" do
+      message = create(:message)
+      expect(message.user).to be_present
+      expect(message.conversation).to be_present
+    end
+  end
+
+  describe "#author" do
+    it "returns the message user" do
+      message = create(:message)
+      expect(message.author).to eq(message.user)
+    end
+  end
+
+  describe "after_create" do
+    it "enqueues a MessageAnalysisJob" do
+      expect { create(:message) }.to have_enqueued_job(MessageAnalysisJob)
+    end
+  end
 end
