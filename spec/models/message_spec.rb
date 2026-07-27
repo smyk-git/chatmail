@@ -11,6 +11,14 @@ RSpec.describe Message, type: :model do
       expect(message).not_to be_valid
       expect(message.errors[:body]).to be_present
     end
+
+    it "is invalid without a user" do
+      expect(build(:message, user: nil)).not_to be_valid
+    end
+
+    it "is invalid without a conversation" do
+      expect(build(:message, conversation: nil)).not_to be_valid
+    end
   end
 
   describe "associations" do
@@ -25,6 +33,12 @@ RSpec.describe Message, type: :model do
     it "returns the message user" do
       message = create(:message)
       expect(message.author).to eq(message.user)
+    end
+  end
+
+  describe "DISPLAY_COUNT" do
+    it "caps how many recent messages the view shows" do
+      expect(Message::DISPLAY_COUNT).to eq(4)
     end
   end
 
