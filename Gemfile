@@ -44,6 +44,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
+  gem "rubocop-rspec", require: false
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
 end
 
